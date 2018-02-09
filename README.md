@@ -1,2 +1,2 @@
 # vue-examples
-one page contained examples and demos of Vue.js Apps
+This repo contains a series of files that represent examples of Vue.js applications.  They are simple, stripped down and serve as a starting point/learning place for creating one page applications with Vue.js.  They might be messy and potentially require additional programs or resources sooooo....
