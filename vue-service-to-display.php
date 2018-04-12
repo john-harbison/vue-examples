@@ -3,7 +3,7 @@
   define( 'DB_HOST', 'localhost' );
   define( 'DB_USER', 'root' );
   define( 'DB_PWD', 'root' );
-  define( 'DB_NAME', 'hh-resources' );  
+  define( 'DB_NAME', 'test' );  
 
 /////////////
 
@@ -19,7 +19,7 @@
   //RETURN ARRAY OF RECORDS
   function getRecords() {
     Global $Link;
-    $sql = "SELECT MIN(id) as id, MIN(post_url) post_url, post_id, MIN(date) date, count(post_id) as total, MIN(post_modified) post_modified FROM `hh-help_helpful` GROUP BY post_id ORDER BY id DESC";
+    $sql = "SELECT id, url, site FROM `test`";
   $results = mysqli_query($Link, $sql );
 
     if (!$results) { echo mysqli_error($Link); echo ' <br>' .  $sql; }
@@ -69,31 +69,23 @@ if ($_POST['get_records']) {
 
 <template id="manage-template">
   <div>
-  <h3>Posts
+  <h3>Sites
   </h3> 
     <table class="table">
       <tr>
-          <th>Post ID</th>
+          <th>ID</th>
           <th>Url </th>
-          <th> Total Resp</th>
-          <th> Date</th>
-          <th> Post Modified</th>
+          <th> Site</th>
       </tr>
       <tr  v-for="post in posts"> 
         <td>
-          {{ post.post_id }}
+         {{ post.id }}
         </td>
         <td>
-           {{ post.post_url }} 
+           <a v-bind:href="post.url" target="_blank"> {{ post.url }} </a>
         </td>
         <td>
-          {{ post.total }}
-        </td>
-        <td>
-          {{ post.date }}
-        </td>
-        <td>
-          {{ post.post_modified }}
+          {{ post.site }}
         </td>
       </tr>
    </table>
